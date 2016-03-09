@@ -1,54 +1,35 @@
 <?php 
 return array(
     'chat_dep' => 2,
-    'host' => 'http://localhost:3000/api/chat',        
-    'throw_exceptions' => false,        // Set to true while debuging
-    'create_duplicate_issues' => false, // If chat was already created on osTicket we won't create an issue again
-    'createissuecallbacks' => array (
-        'chat_close'        => true,    // Create issue automatically then chat is closed
-        'offline_request'   => true,    // Create issue automatically then offline request is send from user
-        //'chat_create'       => true,    // Create issue automatically then chat is created
-    ),
-    
+    'host' => 'http://localhost:3000/api/chat',
 /**
- * Issue from chat data
+ * Chat data
  * */
     
     /**
-     * Subject for osTicket
+     * titulo da exportação  ( pode ser alterado a vontade)
      * */
-    'subject' => 'New ticket from LHC {nick} {email} {country_code} {country_name} {city} {user_tz_identifier}',        
+    'title' => 'Solicitação de tutoria: {nick}-{cpf}-{curso}',        
     
 /**
- * Message template for osTicket if ticket are created from chat
+ * Message template ( pode ser alterado a vontade)
  * */
     'message' => 
     'Chat ID - {id}<br />
-    User nick - {nick}<br />,
-    User e-mail - {email}<br />,
-    User time zone - {user_tz_identifier}<br />
-    Chat was created at - {time_created_front}<br /><br />
-        
+    Aluno - {nick}<br />
+    Cpf - {cpf}<br />
+    E-mail - {email}<br />
+    Curso - {curso}<br />
+    Data/hora do Chat - {time_created_front}<br /><br />   
     //---------------//<br />
-    URL to view a chat (url provided if chat exists)<br />
-    {url}<br /><br />
-        
-    //---------------//<br />
-    Referer<br />
+    Referente<br />
     {referrer}<br /><br />
         
     //---------------//<br />
     Chat log<br />
     {messages}<br /><br />
-        
-    //---------------//<br />
-    Operator remarks<br />
-    {remarks}<br />
     //----------------//<br />
-    User geo data:<br />
-    Country code - {country_code} {country_name} {city}<br />
-    //----------------//<br />
-    Additional chat data<br />
+    informações adicionaris do chat<br />
     {additional_data}',
         
     /**
@@ -72,7 +53,5 @@ return array(
     //----------------//<br />
     Additional data<br />
     {additional_data}<br />'
-        
-    
 );
 ?>
