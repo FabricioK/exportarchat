@@ -1,6 +1,6 @@
 <?php 
 
-class erLhcoreClassExtensionImportachaticetran {
+class erLhcoreClassExtensionExportarchat {
     
     private $configData = false;
     
@@ -19,7 +19,7 @@ class erLhcoreClassExtensionImportachaticetran {
     public function getConfig()
     {
         if ($this->configData === false) {
-            $this->configData = include('extension/importachaticetran/settings/settings.ini.php');
+            $this->configData = include('extension/exportarchat/settings/settings.ini.php');
         }
     }
 
