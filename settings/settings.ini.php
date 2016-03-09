@@ -29,7 +29,7 @@ return array(
     Chat log<br />
     {messages}<br /><br />
     //----------------//<br />
-    informações adicionaris do chat<br />
+    informações adicionais do chat<br />
     {additional_data}',
         
     /**
@@ -39,11 +39,7 @@ return array(
     'User nick - {nick}<br />
     User e-mail - {email}<br />
     Processed at - {time_created_front}<br />
-    //---------------//<br />
-    Referer<br />
-    {referrer}<br /><br />
-        
-    //---------------//<br />
+    //---------------//<br />  
     User message<br />
     {message}<br /><br />
         
