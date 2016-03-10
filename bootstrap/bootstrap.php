@@ -23,13 +23,13 @@ class erLhcoreClassExtensionExportarchat {
         }
     }
 
-	public function sendRequest($data)
+	public function sendRequest($datachatresponse)
     {
         $this->getConfig();        
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->configData['host']);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
+        curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($datachatresponse));
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -48,16 +48,15 @@ class erLhcoreClassExtensionExportarchat {
                 $currentUser = erLhcoreClassUser::instance();
 
                 $userData = $currentUser->getUserData(true);
-                // Format message content            
-                $data = $this->fillDataByChat($params['chat']);        
-                $this->sendRequest($data);  
+                // Format message content
+                $this->sendRequest($this->fillDataByChat($params['chat'],$params['cpf']));  
             }
         }
         return array('chat' => & $chat, 'user_data' => $userData);      
 	}    
    
     // preenche dados do formulário
-    public function fillDataByChat($chat)
+    public function fillDataByChat($chat,$cpf)
     {  
         $this->getConfig();
         
@@ -81,6 +80,8 @@ class erLhcoreClassExtensionExportarchat {
         $data = array(
             'name' => $chat->nick,
             'email' => $chat->email,
+            'cpfchat' => $chat->cpf,
+            'cpfform' => $cpf,
             'subject' => str_replace(array(
                 '{referrer}',
                 '{nick}',
@@ -108,8 +109,6 @@ class erLhcoreClassExtensionExportarchat {
                 '{messages}',
                 '{remarks}',
                 '{nick}',
-                '{cpf}',
-                '{curso}',
                 '{email}',
                 '{country_code}',
                 '{country_name}',
@@ -124,8 +123,6 @@ class erLhcoreClassExtensionExportarchat {
                 $messagesContent,
                 $chat->remarks,
                 $chat->nick,
-                $chat->cpf,
-                $chat->curso,
                 $chat->email,
                 $chat->country_code,
                 $chat->country_name,
