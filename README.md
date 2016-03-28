@@ -14,7 +14,12 @@ baseado nas extensões existentes do live helper chat; https://github.com/remdex
       array (
           0 => 'exportarchat'
       )
-      
+* adicionar as seguintes classes ao array do arquivo "var\autoloads\lhextension_autoload.php" .
+    * : return array(	
+        'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php',
+        'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php',
+    );
+
  ## Bitnami
  existe um erro conhecido conforme postagem no forum: https://forum.livehelperchat.com/viewtopic.php?pid=5156#p5156
  segue correção para o problema de configuração no bitnami -> https://wiki.bitnami.com/Applications/Bitnami_Live_Helper_Chat#How_to_enable_framing_in_your_domain

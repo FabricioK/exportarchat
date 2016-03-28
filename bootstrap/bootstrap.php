@@ -1,5 +1,4 @@
 <?php 
-
 class erLhcoreClassExtensionExportarchat {
     
     private $configData = false;
@@ -14,7 +13,7 @@ class erLhcoreClassExtensionExportarchat {
 		
 		// Attatch event listeners
 		$dispatcher->listen('chat.close',array($this,'chatClosed'));						
-	}
+	}  
     
     public function getConfig()
     {
@@ -49,14 +48,14 @@ class erLhcoreClassExtensionExportarchat {
 
                 $userData = $currentUser->getUserData(true);
                 // Format message content
-                $this->sendRequest($this->fillDataByChat($params['chat'],$params['cpf']));  
+                $this->sendRequest($this->fillDataByChat($chat));  
             }
         }
         return array('chat' => & $chat, 'user_data' => $userData);      
 	}    
    
     // preenche dados do formulário
-    public function fillDataByChat($chat,$cpf)
+    public function fillDataByChat($chat)
     {  
         $this->getConfig();
         
@@ -80,8 +79,7 @@ class erLhcoreClassExtensionExportarchat {
         $data = array(
             'name' => $chat->nick,
             'email' => $chat->email,
-            'cpfchat' => $chat->cpf,
-            'cpfform' => $cpf,
+            'usuarioid' => $chat->usuarioid,
             'subject' => str_replace(array(
                 '{referrer}',
                 '{nick}',

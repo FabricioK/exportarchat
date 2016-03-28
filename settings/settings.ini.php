@@ -1,7 +1,7 @@
 <?php 
 return array(
     'chat_dep' => 2,
-    'host' => 'http://localhost:3000/api/chat',
+    'host' => 'http://localhost:3007/api/chat',
 /**
  * Chat data
  * */
