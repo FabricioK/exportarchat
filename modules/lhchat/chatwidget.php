@@ -159,7 +159,8 @@ if (is_array($Params['user_parameters_unordered']['prod'])) {
 $inputData->accept_tos = false;
 $inputData->question = '';
 $inputData->operator = (int)$Params['user_parameters_unordered']['operator'];
-$inputData->usuarioid = (int)$Params['user_parameters_unordered']['usuarioid'];
+$inputData->inscricaoid = (int)$Params['user_parameters_unordered']['inscricaoid'];
+$inputData->disciplinaid = (int)$Params['user_parameters_unordered']['disciplinaid'];
 
 // Perhaps user was redirected to leave a message form because chat was not acceptend in some time interval
 if ((string)$Params['user_parameters_unordered']['chatprefill'] != '') {
@@ -232,11 +233,18 @@ if ($inputData->departament_id > 0) {
 	$tpl->set('department',false);
 }
 
-if ($inputData->usuarioid > 0) {
-	$chat->usuarioid = $inputData->usuarioid;
-	$tpl->set('usuarioid',$chat->usuarioid);
+if ($inputData->inscricaoid > 0) {
+	$chat->inscricaoid = $inputData->inscricaoid;
+	$tpl->set('inscricaoid',$chat->inscricaoid);
 } else {
-	$tpl->set('usuarioid',false);
+	$tpl->set('inscricaoid',false);
+}
+
+if ($inputData->disciplinaid > 0) {
+	$chat->disciplinaid = $inputData->disciplinaid;
+	$tpl->set('disciplinaid',$chat->disciplinaid);
+} else {
+	$tpl->set('disciplinaid',false);
 }
 // Leave a message functionality
 $leaveamessage = ((string)$Params['user_parameters_unordered']['leaveamessage'] == 'true' || (isset($startDataFields['force_leave_a_message']) && $startDataFields['force_leave_a_message'] == true)) ? true : false;
@@ -305,16 +313,28 @@ if (isset($_POST['StartChat']) && $disabled_department === false)
 	       if ( empty($chat->nick) ) {
 	           $chat->nick = erTranslationClassLhTranslation::getInstance()->getTranslation('chat/startchat','Visitor');
 	       }
-           if ( empty($chat->usuarioid) ) {            
-                if ($inputData->usuarioid > 0) {
-                    $chat->usuarioid = $inputData->usuarioid;                    
+            if ( empty($chat->inscricaoid) ) {            
+                if ($inputData->inscricaoid > 0) {
+                    $chat->inscricaoid = $inputData->inscricaoid;                    
                 }
             }
             
-            if ( empty($chat->usuarioid) ) 
+            if ( empty($chat->inscricaoid) ) 
             {
-                $chat->usuarioid = 112233;                   
+                $chat->inscricaoid = 0;                   
             }
+            
+            if ( empty($chat->disciplinaid) ) {            
+                if ($inputData->disciplinaid > 0) {
+                    $chat->disciplinaid = $inputData->disciplinaid;                    
+                }
+            }
+            
+            if ( empty($chat->disciplinaid) ) 
+            {
+                $chat->disciplinaid = 0;                   
+            }
+            
 	       // Store chat
 	       $chat->saveThis();
 
@@ -532,11 +552,15 @@ if ( $form->hasValidData( 'via_encrypted' ) && !empty($form->via_encrypted))
     $inputData->via_encrypted = $form->via_encrypted;
 }
 
-if ( $form->hasValidData( 'usuarioid' ) && !empty($form->usuarioid))
+if ( $form->hasValidData( 'disciplinaid' ) && !empty($form->disciplinaid))
 {
-	$inputData->usuarioid = $form->usuarioid;
+	$inputData->disciplinaid = $form->disciplinaid;
 }
 
+if ( $form->hasValidData( 'inscricaoid' ) && !empty($form->inscricaoid))
+{
+	$inputData->inscricaoid = $form->inscricaoid;
+}
 // Fill back office values ir prefilled
 if ($form->hasValidData( 'value_items_admin' ))
 {

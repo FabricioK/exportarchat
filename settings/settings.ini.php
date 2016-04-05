@@ -1,7 +1,7 @@
 <?php 
 return array(
     'chat_dep' => 2,
-    'host' => 'http://localhost:3007/api/chat',
+    'host' => 'https://homolog.icetran.org.br/ead/home/RecebeNotificacaoChatlive',
 /**
  * Chat data
  * */
@@ -17,9 +17,7 @@ return array(
     'message' => 
     'Chat ID - {id}<br />
     Aluno - {nick}<br />
-    Cpf - {cpf}<br />
     E-mail - {email}<br />
-    Curso - {curso}<br />
     Data/hora do Chat - {time_created_front}<br /><br />   
     //---------------//<br />
     Referente<br />
