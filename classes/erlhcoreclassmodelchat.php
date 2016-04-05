@@ -89,6 +89,8 @@ class erLhcoreClassModelChat {
                'product_id'    	        => $this->product_id,
                
                'inscricaoid'              => $this->inscricaoid,
+               
+               'disciplinaid'              => $this->disciplinaid,
        );
    }
 
