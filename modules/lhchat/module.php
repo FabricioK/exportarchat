@@ -24,6 +24,7 @@ $ViewList['chatwidget'] = array (
     'uparams' => array('ua','switchform','inscricaoid','disciplinaid','operator','theme','vid','sound','hash','hash_resume','mode','offline','leaveamessage','department','priority','chatprefill','survey','sdemo','prod','phash','pvhash'),
 	'multiple_arguments' => array ( 'department', 'ua', 'prod' )
 );
-?>
+
 
 $FunctionList['use'] = array('explain' => 'Allow operator to save a chat');
+?>
