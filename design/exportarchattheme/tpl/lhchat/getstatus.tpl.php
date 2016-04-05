@@ -117,7 +117,10 @@ var lh_inst  = {
 	is_dragging : false,
 	online_tracked : false,
     urlopen : function(){   
-    	return "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/chat/startchat<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : ''?><?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : ''?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>";
+    	return "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/chat/startchat<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?><?php $department !== false ? print '/(department)/'.$department : ''?>
+        <?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : ''?>
+        <?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : ''?>
+        <?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : ''?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>";
     },
 
     hasSurvey : <?php echo $survey !== false ? 'true ': 'false'?>,
@@ -284,7 +287,10 @@ var lh_inst  = {
         if (lh_inst.cookieData.hash && lh_inst.hasSurvey == true && lh_inst.surveyShown == false){
             var locationCurrent = encodeURIComponent(window.location.href.substring(window.location.protocol.length));    
             this.surveyShown = true;
-            document.getElementById('lhc_iframe').src = "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/survey/fillwidget<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?><?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : ''?><?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>"+this.getAppendCookieArguments()+'?URLReferer='+locationCurrent+this.parseOptions()+this.parseStorageArguments()+'&dt='+encodeURIComponent(document.title);
+            document.getElementById('lhc_iframe').src = "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/survey/fillwidget<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?>
+            <?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : ''?>
+            <?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : ''?>
+            <?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>"+this.getAppendCookieArguments()+'?URLReferer='+locationCurrent+this.parseOptions()+this.parseStorageArguments()+'&dt='+encodeURIComponent(document.title);
         }
     },
     
@@ -444,7 +450,10 @@ var lh_inst  = {
                 this.initial_iframe_url = url_to_open+this.getAppendCookieArguments()+'?URLReferer='+locationCurrent+this.parseOptions()+this.parseStorageArguments()+'&dt='+encodeURIComponent(document.title);
           } else {
           		this.chatOpenedCallback(this.isOnline == false ? 'internal_offline' : 'internal');	
-                this.initial_iframe_url = "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/chat/chatwidget<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : '' ?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?><?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>"+this.getAppendCookieArguments()+'?URLReferer='+locationCurrent+this.parseOptions()+this.parseStorageArguments()+'&dt='+encodeURIComponent(document.title);
+                this.initial_iframe_url = "<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>"+this.lang+"/chat/chatwidget<?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?>
+                <?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : '' ?>
+                <?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : '' ?>
+                <?php $department !== false ? print '/(department)/'.$department : ''?><?php $theme !== false ? print '/(theme)/'.$theme->id : ''?><?php $operator !== false ? print '/(operator)/'.$operator : ''?><?php $priority !== false ? print '/(priority)/'.$priority : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>"+this.getAppendCookieArguments()+'?URLReferer='+locationCurrent+this.parseOptions()+this.parseStorageArguments()+'&dt='+encodeURIComponent(document.title);
           };
 
           if (window.innerWidth < 768) {
@@ -889,7 +898,7 @@ var lh_inst  = {
         var s = document.createElement('script');
         s.setAttribute('id','lhc_check_status');
         s.setAttribute('type','text/javascript');
-        s.setAttribute('src','<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>'+this.lang+'/chat/chatcheckstatus<?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : ''?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $disable_online_tracking === true ? print '/(dot)/true' : ''?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>/(status)/' + this.isOnline + (this.cookieDataPers.vid ? '/(vid)/'+this.cookieDataPers.vid : '')+ hashAppend + hashResume + '/(uactiv)/'+this.userActive+'/(wopen)/'+this.timeoutStatusWidgetOpen + '/(uaction)/'+sender);
+        s.setAttribute('src','<?php echo erLhcoreClassModelChatConfig::fetch('explicit_http_mode')->current_value?>//<?php echo $_SERVER['HTTP_HOST']?><?php echo erLhcoreClassDesign::baseurlsite()?>'+this.lang+'/chat/chatcheckstatus<?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : ''?><?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : ''?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $uarguments !== false ? print '/(ua)/'.$uarguments : '' ?><?php $disable_online_tracking === true ? print '/(dot)/true' : ''?><?php $survey !== false ? print '/(survey)/'.$survey : ''?>/(status)/' + this.isOnline + (this.cookieDataPers.vid ? '/(vid)/'+this.cookieDataPers.vid : '')+ hashAppend + hashResume + '/(uactiv)/'+this.userActive+'/(wopen)/'+this.timeoutStatusWidgetOpen + '/(uaction)/'+sender);
         th.appendChild(s);
     },
     

@@ -88,7 +88,7 @@ class erLhcoreClassModelChat {
                // Product ID
                'product_id'    	        => $this->product_id,
                
-               'usuarioid'              => $this->usuarioid,
+               'inscricaoid'              => $this->inscricaoid,
        );
    }
 
@@ -548,7 +548,9 @@ class erLhcoreClassModelChat {
    
    public $updateIgnoreColumns = array();
    
-   public $usuarioid = 112233;
+   public $inscricaoid = 0;
+   
+   public $disciplinaid = 0;
 }
 
 ?>

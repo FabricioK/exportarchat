@@ -79,7 +79,8 @@ class erLhcoreClassExtensionExportarchat {
         $data = array(
             'name' => $chat->nick,
             'email' => $chat->email,
-            'usuarioid' => $chat->usuarioid,
+            'inscricaoid' => $chat->inscricaoid,
+            'disciplinaid' => $chat->disciplinaid,
             'subject' => str_replace(array(
                 '{referrer}',
                 '{nick}',

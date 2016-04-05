@@ -18,7 +18,7 @@
 
 <h4><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('chat/startchat','Fill out this form to start a chat');?></h4>
 
-<form id="form-start-chat" method="post" action="<?php echo erLhcoreClassDesign::baseurl('chat/startchat')?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : ''?><?php $input_data->priority !== false ? print '/(priority)/'.$input_data->priority : ''?><?php $input_data->vid !== false ? print '/(vid)/'.htmlspecialchars($input_data->vid) : ''?><?php $input_data->hash_resume !== false ? print '/(hash_resume)/'.htmlspecialchars($input_data->hash_resume) : ''?><?php echo $append_mode_theme?>" onsubmit="return lhinst.addCaptcha('<?php echo time()?>',$(this))">
+<form id="form-start-chat" method="post" action="<?php echo erLhcoreClassDesign::baseurl('chat/startchat')?><?php $department !== false ? print '/(department)/'.$department : ''?><?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : ''?><?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : ''?><?php $input_data->priority !== false ? print '/(priority)/'.$input_data->priority : ''?><?php $input_data->vid !== false ? print '/(vid)/'.htmlspecialchars($input_data->vid) : ''?><?php $input_data->hash_resume !== false ? print '/(hash_resume)/'.htmlspecialchars($input_data->hash_resume) : ''?><?php echo $append_mode_theme?>" onsubmit="return lhinst.addCaptcha('<?php echo time()?>',$(this))">
 
 <?php $formResubmitId = 'form-start-chat'; ?>
 <?php include(erLhcoreClassDesign::designtpl('lhchat/part/auto_resubmit.tpl.php'));?>
@@ -109,7 +109,8 @@
 <input type="hidden" value="<?php echo htmlspecialchars($referer);?>" name="URLRefer"/>
 <input type="hidden" value="<?php echo htmlspecialchars($referer_site);?>" name="r" />
 <input type="hidden" value="<?php echo htmlspecialchars($input_data->operator);?>" name="operator" />
-<input type="hidden" value="<?php echo htmlspecialchars($input_data->usuarioid);?>" name="usuarioid" />
+<input type="hidden" value="<?php echo htmlspecialchars($input_data->inscricaoid);?>" name="inscricaoid" />
+<input type="hidden" value="<?php echo htmlspecialchars($input_data->disciplinaid);?>" name="disciplinaid" />
 <input type="hidden" value="1" name="StartChat"/>
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhchat/part/switch_to_offline.tpl.php'));?>

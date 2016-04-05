@@ -323,10 +323,15 @@ $def->properties['unanswered_chat']->columnName   = 'unanswered_chat';
 $def->properties['unanswered_chat']->propertyName = 'unanswered_chat';
 $def->properties['unanswered_chat']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
-$def->properties['usuarioid'] = new ezcPersistentObjectProperty();
-$def->properties['usuarioid']->columnName   = 'usuarioid';
-$def->properties['usuarioid']->propertyName = 'usuarioid';
-$def->properties['usuarioid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+$def->properties['inscricaoid'] = new ezcPersistentObjectProperty();
+$def->properties['inscricaoid']->columnName   = 'inscricaoid';
+$def->properties['inscricaoid']->propertyName = 'inscricaoid';
+$def->properties['inscricaoid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['disciplinaid'] = new ezcPersistentObjectProperty();
+$def->properties['disciplinaid']->columnName   = 'disciplinaid';
+$def->properties['disciplinaid']->propertyName = 'disciplinaid';
+$def->properties['disciplinaid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 return $def;
 

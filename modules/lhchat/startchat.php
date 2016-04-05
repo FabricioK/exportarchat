@@ -139,7 +139,8 @@ if (is_array($Params['user_parameters_unordered']['prod'])) {
 
 $inputData->accept_tos = false;
 $inputData->operator = (int)$Params['user_parameters_unordered']['operator'];
-$inputData->usuarioid = (int)$Params['user_parameters_unordered']['usuarioid'];
+$inputData->inscricaoid = (int)$Params['user_parameters_unordered']['inscricaoid'];
+$inputData->disciplinaid = (int)$Params['user_parameters_unordered']['disciplinaid'];
 
 // Perhaps user was redirected to leave a message form because chat was not acceptend in some time interval
 if ((string)$Params['user_parameters_unordered']['chatprefill'] != '') {
@@ -151,7 +152,8 @@ if ((string)$Params['user_parameters_unordered']['chatprefill'] != '') {
 			$inputData->chatprefill = $Params['user_parameters_unordered']['chatprefill'];			
 			$inputData->username = $chatPrefill->nick;
 			$inputData->departament_id = $chatPrefill->dep_id;
-            $inputData->usuarioid = $chatPrefill->usuarioid;
+            $inputData->inscricaoid = $chatPrefill->inscricaoid;
+            $inputData->disciplinaid = $chatPrefill->disciplinaid;
 			$inputData->email = $chatPrefill->email;			
 			$inputData->phone = $chatPrefill->phone;	
 			$inputData->accept_tos = true;
@@ -202,12 +204,20 @@ if ($inputData->departament_id > 0) {
 	$tpl->set('department',false);
 }
 
-// Assign department instantly
-if ($inputData->usuarioid > 0) {
-	$chat->usuarioid = $inputData->usuarioid;
-	$tpl->set('usuarioid',$chat->usuarioid);
+// Assign inscricao instantly
+if ($inputData->inscricaoid > 0) {
+	$chat->inscricaoid = $inputData->inscricaoid;
+	$tpl->set('inscricaoid',$chat->inscricaoid);
 } else {
-	$tpl->set('usuarioid',false);
+	$tpl->set('inscricaoid',false);
+}
+
+// Assign disciplina instantly
+if ($inputData->disciplinaid > 0) {
+	$chat->disciplinaid = $inputData->disciplinaid;
+	$tpl->set('disciplinaid',$chat->disciplinaid);
+} else {
+	$tpl->set('disciplinaid',false);
 }
 
 $leaveamessage = ((string)$Params['user_parameters_unordered']['leaveamessage'] == 'true' || (isset($startDataFields['force_leave_a_message']) && $startDataFields['force_leave_a_message'] == true)) ? true : false;
@@ -274,10 +284,14 @@ if (isset($_POST['StartChat']) && $disabled_department === false) {
 	           $chat->nick = erTranslationClassLhTranslation::getInstance()->getTranslation('chat/startchat','Visitor');
 	       }
            
-            if ( empty($chat->usuarioid) ) {
-                $chat->usuarioid = $inputData->usuarioid;
+            if ( empty($chat->inscricaoid) ) {
+                $chat->inscricaoid = $inputData->inscricaoid;
             }
-                     
+            
+             if ( empty($chat->disciplinaid) ) {
+                $chat->disciplinaid = $inputData->disciplinaid;
+            }         
+            
 	       // Store chat
 	       $chat->saveThis();
 

@@ -36,7 +36,8 @@ if ($theme !== false && $theme->explain_text != '') : ?>
 
 <form method="post" id="form-start-chat" action="<?php echo erLhcoreClassDesign::baseurl('chat/chatwidget')?>
 <?php echo $append_mode?><?php $department !== false ? print '/(department)/'.$department : ''?>
-<?php $usuarioid !== false ? print '/(usuarioid)/'.$usuarioid : ''?>
+<?php $inscricaoid !== false ? print '/(inscricaoid)/'.$inscricaoid : ''?>
+<?php $disciplinaid !== false ? print '/(disciplinaid)/'.$disciplinaid : ''?>
 <?php $input_data->priority !== false ? print '/(priority)/'.$input_data->priority : ''?><?php $input_data->vid !== false ? print '/(vid)/'.htmlspecialchars($input_data->vid) : ''?><?php $input_data->hash_resume !== false ? print '/(hash_resume)/'.htmlspecialchars($input_data->hash_resume) : ''?><?php $leaveamessage == true ? print '/(leaveamessage)/true' : ''?><?php $forceoffline == true ? print '/(offline)/true' : ''?><?php echo $append_mode_theme?>" onsubmit="return <?php if (isset($start_data_fields['message_auto_start']) && $start_data_fields['message_auto_start'] == true) : ?>lhinst.prestartChat('<?php echo time()?>',$(this))<?php else : ?>lhinst.addCaptcha('<?php echo time()?>',$(this))<?php endif?>">
 
 <?php if (isset($start_data_fields['message_visible_in_page_widget']) && $start_data_fields['message_visible_in_page_widget'] == true && isset($start_data_fields['show_messages_box']) && $start_data_fields['show_messages_box'] == true) : ?>
@@ -145,7 +146,8 @@ if ($theme !== false && $theme->explain_text != '') : ?>
 <input type="hidden" value="<?php echo htmlspecialchars($referer);?>" name="URLRefer" />
 <input type="hidden" value="<?php echo htmlspecialchars($referer_site);?>" name="r" />
 <input type="hidden" value="<?php echo htmlspecialchars($input_data->operator);?>" name="operator" />
-<input type="hidden" value="<?php echo htmlspecialchars($input_data->usuarioid);?>" name="usuarioid" />
+<input type="hidden" value="<?php echo htmlspecialchars($input_data->inscricaoid);?>" name="inscricaoid" />
+<input type="hidden" value="<?php echo htmlspecialchars($input_data->disciplinaid);?>" name="disciplinaid" />
 <input type="hidden" value="1" name="StartChat"/>
 <?php if ($hasExtraField === true) : ?>
     <input type="hidden" value="1" id="hasFormExtraField"/>
