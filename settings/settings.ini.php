@@ -1,7 +1,7 @@
 <?php 
 return array(
     'chat_dep' => 2,
-    'host' => 'https://homolog.icetran.org.br/ead/home/RecebeNotificacaoChatlive',
+    'host' => 'localhost:8080/ead/home/RecebeNotificacaoChatlive',
 /**
  * Chat data
  * */
@@ -9,7 +9,7 @@ return array(
     /**
      * titulo da exportação  ( pode ser alterado a vontade)
      * */
-    'title' => 'Solicitação de tutoria: {nick}-{cpf}-{curso}',        
+    'title' => 'Solicitação de tutoria: {nick}',        
     
 /**
  * Message template ( pode ser alterado a vontade)
