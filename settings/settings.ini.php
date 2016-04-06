@@ -1,7 +1,7 @@
 <?php 
 return array(
-    'chat_dep' => 2,
-    'host' => 'localhost:8080/ead/home/RecebeNotificacaoChatlive',
+    'chat_dep' => 9,
+    'host' => 'https://homolog.icetran.org.br/ead/home/RecebeNotificacaoChatlive',
 /**
  * Chat data
  * */
@@ -15,37 +15,37 @@ return array(
  * Message template ( pode ser alterado a vontade)
  * */
     'message' => 
-    'Chat ID - {id}<br />
-    Aluno - {nick}<br />
-    E-mail - {email}<br />
-    Data/hora do Chat - {time_created_front}<br /><br />   
-    //---------------//<br />
-    Referente<br />
-    {referrer}<br /><br />
+    'Chat ID - {id}
+    Aluno - {nick}
+    E-mail - {email}
+    Data/hora do Chat - {time_created_front}   
+    //---------------//
+    Referente
+    {referrer}
         
-    //---------------//<br />
-    Chat log<br />
-    {messages}<br /><br />
-    //----------------//<br />
-    informações adicionais do chat<br />
+    //---------------//
+    Chat log
+    {messages}
+    //----------------//
+    informações adicionais do chat
     {additional_data}',
         
     /**
     * Message template for osTicket if ticket are created from offline request
     * */
     'message_offline' => 
-    'User nick - {nick}<br />
-    User e-mail - {email}<br />
-    Processed at - {time_created_front}<br />
-    //---------------//<br />  
-    User message<br />
-    {message}<br /><br />
+    'User nick - {nick}
+    User e-mail - {email}
+    Processed at - {time_created_front}
+    //---------------//
+    User message
+    {message}
         
-    //----------------//<br />
-    User geo data:<br />
-    Country code - {country_code} {country_name} {city}<br />
-    //----------------//<br />
-    Additional data<br />
-    {additional_data}<br />'
+    //----------------//
+    User geo data:
+    Country code - {country_code} {country_name} {city}
+    //----------------//
+    Additional data
+    {additional_data}'
 );
 ?>

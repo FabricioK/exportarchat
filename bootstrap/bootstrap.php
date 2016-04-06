@@ -26,15 +26,18 @@ class erLhcoreClassExtensionExportarchat {
     {
         $this->getConfig();        
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->configData['host']);
+        $url =  $this->configData['host'];
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($datachatresponse));
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($datachatresponse));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));        
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        curl_close($ch);      
-        
+        curl_setopt($curl, CURLOPT_VERBOSE, true);
+
+        $result = curl_exec($ch);      
+        curl_close($ch);
+                
         return (int)$result; 
     }
     
