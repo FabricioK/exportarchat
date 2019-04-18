@@ -1,7 +1,7 @@
 <?php 
 return array(
-    'chat_dep' => 9,
-    'host' => 'https://icetran.com.br/ead/home/RecebeNotificacaoChatlive',
+    'chat_dep' => 2,
+    'host' => 'http://localhost:8080/ead/home/RecebeNotificacaoChatlive',
 /**
  * Chat data
  * */
