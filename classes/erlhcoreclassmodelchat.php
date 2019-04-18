@@ -711,6 +711,10 @@ class erLhcoreClassModelChat {
    public $device_type = 0;
 
    public $updateIgnoreColumns = array();
+
+   public $inscricaoid = 0;
+   
+   public $disciplinaid = 0;
 }
 
 ?>

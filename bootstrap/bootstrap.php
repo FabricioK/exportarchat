@@ -8,13 +8,31 @@ class erLhcoreClassExtensionExportarchat {
 	}
 	
 	public function run(){		
-		
+        
+        $this->registerAutoload ();
+
 		$dispatcher = erLhcoreClassChatEventDispatcher::getInstance();
 		
 		// Attatch event listeners
 		$dispatcher->listen('chat.close',array($this,'chatClosed'));						
 	}  
     
+    public function registerAutoload() {
+        spl_autoload_register ( array (
+            $this,
+            'autoload'
+        ), true, false );
+    }
+    public function autoload($className) {
+        $classesArray = array (
+            'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php', 'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php',
+        );
+    
+        if (key_exists ( $className, $classesArray )) {
+            include_once $classesArray [$className];
+        }
+    }
+
     public function getConfig()
     {
         if ($this->configData === false) {
