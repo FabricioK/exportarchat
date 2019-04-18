@@ -30,6 +30,22 @@ $def->properties['status_sub']->columnName   = 'status_sub';
 $def->properties['status_sub']->propertyName = 'status_sub';
 $def->properties['status_sub']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+/**
+ * Stores additional persisten arguments for substatus changes. Application logic is responsible for for clearing these.
+ */
+$def->properties['status_sub_arg'] = new ezcPersistentObjectProperty();
+$def->properties['status_sub_arg']->columnName   = 'status_sub_arg';
+$def->properties['status_sub_arg']->propertyName = 'status_sub_arg';
+$def->properties['status_sub_arg']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
+
+/**
+* Sub status, used for operators only. Should not influce user actions. Just operators.
+* */
+$def->properties['status_sub_sub'] = new ezcPersistentObjectProperty();
+$def->properties['status_sub_sub']->columnName   = 'status_sub_sub';
+$def->properties['status_sub_sub']->propertyName = 'status_sub_sub';
+$def->properties['status_sub_sub']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 $def->properties['time'] = new ezcPersistentObjectProperty();
 $def->properties['time']->columnName   = 'time';
 $def->properties['time']->propertyName = 'time';
@@ -223,30 +239,10 @@ $def->properties['chat_initiator']->columnName   = 'chat_initiator';
 $def->properties['chat_initiator']->propertyName = 'chat_initiator';
 $def->properties['chat_initiator']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
-$def->properties['wait_timeout'] = new ezcPersistentObjectProperty();
-$def->properties['wait_timeout']->columnName   = 'wait_timeout';
-$def->properties['wait_timeout']->propertyName = 'wait_timeout';
-$def->properties['wait_timeout']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
-$def->properties['wait_timeout_send'] = new ezcPersistentObjectProperty();
-$def->properties['wait_timeout_send']->columnName   = 'wait_timeout_send';
-$def->properties['wait_timeout_send']->propertyName = 'wait_timeout_send';
-$def->properties['wait_timeout_send']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
-$def->properties['wait_timeout_repeat'] = new ezcPersistentObjectProperty();
-$def->properties['wait_timeout_repeat']->columnName   = 'wait_timeout_repeat';
-$def->properties['wait_timeout_repeat']->propertyName = 'wait_timeout_repeat';
-$def->properties['wait_timeout_repeat']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
 $def->properties['online_user_id'] = new ezcPersistentObjectProperty();
 $def->properties['online_user_id']->columnName   = 'online_user_id';
 $def->properties['online_user_id']->propertyName = 'online_user_id';
 $def->properties['online_user_id']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
-$def->properties['timeout_message'] = new ezcPersistentObjectProperty();
-$def->properties['timeout_message']->columnName   = 'timeout_message';
-$def->properties['timeout_message']->propertyName = 'timeout_message';
-$def->properties['timeout_message']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 
 $def->properties['operation'] = new ezcPersistentObjectProperty();
 $def->properties['operation']->columnName   = 'operation';
@@ -281,6 +277,12 @@ $def->properties['transfer_if_na'] = new ezcPersistentObjectProperty();
 $def->properties['transfer_if_na']->columnName   = 'transfer_if_na';
 $def->properties['transfer_if_na']->propertyName = 'transfer_if_na';
 $def->properties['transfer_if_na']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+// Transfer user ID, user id who transfered chat
+$def->properties['transfer_uid'] = new ezcPersistentObjectProperty();
+$def->properties['transfer_uid']->columnName   = 'transfer_uid';
+$def->properties['transfer_uid']->propertyName = 'transfer_uid';
+$def->properties['transfer_uid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 // Was callback for unaccepted chat executed? 0 - no, 1 - yes
 $def->properties['na_cb_executed'] = new ezcPersistentObjectProperty();
@@ -322,6 +324,72 @@ $def->properties['unanswered_chat'] = new ezcPersistentObjectProperty();
 $def->properties['unanswered_chat']->columnName   = 'unanswered_chat';
 $def->properties['unanswered_chat']->propertyName = 'unanswered_chat';
 $def->properties['unanswered_chat']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['last_op_msg_time'] = new ezcPersistentObjectProperty();
+$def->properties['last_op_msg_time']->columnName   = 'last_op_msg_time';
+$def->properties['last_op_msg_time']->propertyName = 'last_op_msg_time';
+$def->properties['last_op_msg_time']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['has_unread_op_messages'] = new ezcPersistentObjectProperty();
+$def->properties['has_unread_op_messages']->columnName   = 'has_unread_op_messages';
+$def->properties['has_unread_op_messages']->propertyName = 'has_unread_op_messages';
+$def->properties['has_unread_op_messages']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+// Last user sync time, updated only lastsync < 30 sec
+$def->properties['lsync'] = new ezcPersistentObjectProperty();
+$def->properties['lsync']->columnName   = 'lsync';
+$def->properties['lsync']->propertyName = 'lsync';
+$def->properties['lsync']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['unread_op_messages_informed'] = new ezcPersistentObjectProperty();
+$def->properties['unread_op_messages_informed']->columnName   = 'unread_op_messages_informed';
+$def->properties['unread_op_messages_informed']->propertyName = 'unread_op_messages_informed';
+$def->properties['unread_op_messages_informed']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['device_type'] = new ezcPersistentObjectProperty();
+$def->properties['device_type']->columnName   = 'device_type';
+$def->properties['device_type']->propertyName = 'device_type';
+$def->properties['device_type']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['sender_user_id'] = new ezcPersistentObjectProperty();
+$def->properties['sender_user_id']->columnName   = 'sender_user_id';
+$def->properties['sender_user_id']->propertyName = 'sender_user_id';
+$def->properties['sender_user_id']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['usaccept'] = new ezcPersistentObjectProperty();
+$def->properties['usaccept']->columnName   = 'usaccept';
+$def->properties['usaccept']->propertyName = 'usaccept';
+$def->properties['usaccept']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['uagent'] = new ezcPersistentObjectProperty();
+$def->properties['uagent']->columnName   = 'uagent';
+$def->properties['uagent']->propertyName = 'uagent';
+$def->properties['uagent']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
+
+$def->properties['auto_responder_id'] = new ezcPersistentObjectProperty();
+$def->properties['auto_responder_id']->columnName   = 'auto_responder_id';
+$def->properties['auto_responder_id']->propertyName = 'auto_responder_id';
+$def->properties['auto_responder_id']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['pnd_time'] = new ezcPersistentObjectProperty();
+$def->properties['pnd_time']->columnName   = 'pnd_time';
+$def->properties['pnd_time']->propertyName = 'pnd_time';
+$def->properties['pnd_time']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['cls_time'] = new ezcPersistentObjectProperty();
+$def->properties['cls_time']->columnName   = 'cls_time';
+$def->properties['cls_time']->propertyName = 'cls_time';
+$def->properties['cls_time']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['anonymized'] = new ezcPersistentObjectProperty();
+$def->properties['anonymized']->columnName   = 'anonymized';
+$def->properties['anonymized']->propertyName = 'anonymized';
+$def->properties['anonymized']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['invitation_id'] = new ezcPersistentObjectProperty();
+$def->properties['invitation_id']->columnName   = 'invitation_id';
+$def->properties['invitation_id']->propertyName = 'invitation_id';
+$def->properties['invitation_id']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 $def->properties['inscricaoid'] = new ezcPersistentObjectProperty();
 $def->properties['inscricaoid']->columnName   = 'inscricaoid';

@@ -81,6 +81,16 @@ $def->properties['attr_int_3']->columnName   = 'attr_int_3';
 $def->properties['attr_int_3']->propertyName = 'attr_int_3';
 $def->properties['attr_int_3']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+$def->properties['languages'] = new ezcPersistentObjectProperty();
+$def->properties['languages']->columnName   = 'languages';
+$def->properties['languages']->propertyName = 'languages';
+$def->properties['languages']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
+
+$def->properties['additional_data'] = new ezcPersistentObjectProperty();
+$def->properties['additional_data']->columnName   = 'additional_data';
+$def->properties['additional_data']->propertyName = 'additional_data';
+$def->properties['additional_data']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
+
 return $def;
 
 ?>
