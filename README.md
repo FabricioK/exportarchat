@@ -29,8 +29,8 @@ baseado nas extensões existentes do live helper chat; https://github.com/remdex
       )
 * adicionar as seguintes classes ao array do arquivo "var\autoloads\lhextension_autoload.php" .
     * : return array(	
-        'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php',
-        'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php',
+        'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php', 
+        'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php'
     );
     
 * limpar o cache do livehelper

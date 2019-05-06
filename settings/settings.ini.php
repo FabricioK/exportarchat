@@ -1,6 +1,6 @@
 <?php 
 return array(
-    'chat_dep' => 2,
+    'chat_dep' => 9,
     'host' => 'http://localhost:8080/ead/home/RecebeNotificacaoChatlive',
 /**
  * Chat data

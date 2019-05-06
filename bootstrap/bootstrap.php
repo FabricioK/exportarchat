@@ -51,6 +51,10 @@ class erLhcoreClassExtensionExportarchat {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
         $result = curl_exec($ch);      
+        if ($result === false) {
+            throw new Exception(curl_error($ch), curl_errno($ch));
+        }
+
         curl_close($ch);
                 
         return (int)$result; 
