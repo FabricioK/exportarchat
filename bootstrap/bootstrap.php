@@ -18,14 +18,12 @@ class erLhcoreClassExtensionExportarchat {
 	}  
     
     public function registerAutoload() {
-        spl_autoload_register ( array (
-            $this,
-            'autoload'
-        ), true, false );
+        spl_autoload_register ([$this,'autoload'] );
     }
     public function autoload($className) {
         $classesArray = array (
-            'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php', 'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php',
+            'erLhcoreClassModelChat' => 'extension/exportarchat/classes/erlhcoreclassmodelchat.php', 
+            'erLhcoreClassChat' => 'extension/exportarchat/classes/lhchat.php'
         );
     
         if (key_exists ( $className, $classesArray )) {
@@ -51,7 +49,6 @@ class erLhcoreClassExtensionExportarchat {
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));        
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_VERBOSE, true);
 
         $result = curl_exec($ch);      
         curl_close($ch);

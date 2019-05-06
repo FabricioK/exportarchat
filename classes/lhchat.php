@@ -1267,7 +1267,7 @@ class erLhcoreClassChat {
         {
             self::$persistentSession = new ezcPersistentSession(
                 ezcDbInstance::get(),
-                new ezcPersistentCodeManager( './pos/lhchat' )
+                new ezcPersistentCodeManager( './extension/exportarchat/classes/pos' )
             );
         }
         return self::$persistentSession;

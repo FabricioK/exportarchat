@@ -11,7 +11,7 @@ class erLhcoreClassModelChat {
    public static $dbSessionHandler = 'erLhcoreClassChat::getSession';
     
    public static $dbSortOrder = 'DESC';
-    
+
    public function getState()
    {
        return array(
@@ -105,10 +105,7 @@ class erLhcoreClassModelChat {
            
                // Product ID
                'product_id'    	        => $this->product_id,
-               
-               'inscricaoid'              => $this->inscricaoid,
-               
-               'disciplinaid'              => $this->disciplinaid,
+
                // Product ID
                'invitation_id'    	    => $this->invitation_id,
        		
@@ -123,6 +120,12 @@ class erLhcoreClassModelChat {
 
                // Anonymized
                'anonymized'    	        => $this->anonymized,
+
+               'inscricaoid'    	        => $this->inscricaoid,
+               
+               'disciplinaid'    	        => $this->disciplinaid,
+
+
        );
    }
 
@@ -486,7 +489,12 @@ class erLhcoreClassModelChat {
 
        		return $this->user_status_front;
        	break;	
-       		
+        case 'inscricaoid':
+            return $this->inscricaoid;
+            break;
+        case 'disciplinaid':
+            return $this->disciplinaid;
+            break;
        	default:
        		break;
        }
@@ -710,11 +718,9 @@ class erLhcoreClassModelChat {
    // 0 - PC, 1 - mobile, 2 - tablet
    public $device_type = 0;
 
+   public $inscricaoid = 0 ;
+
+   public $disciplinaid = 0 ;
+
    public $updateIgnoreColumns = array();
-
-   public $inscricaoid = 0;
-   
-   public $disciplinaid = 0;
 }
-
-?>

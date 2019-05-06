@@ -401,6 +401,7 @@ $def->properties['disciplinaid']->columnName   = 'disciplinaid';
 $def->properties['disciplinaid']->propertyName = 'disciplinaid';
 $def->properties['disciplinaid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+
 return $def;
 
 ?>
