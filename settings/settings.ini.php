@@ -17,7 +17,6 @@ return array(
     'message' => 
     'Chat ID - {id}
     Aluno - {nick}
-    E-mail - {email}
     Data/hora do Chat - {time_created_front}   
     //---------------//
     Referente
